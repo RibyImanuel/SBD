@@ -1,0 +1,44 @@
+DROP VIEW nama_view;
+UPDATE emp
+SET mgr = NULL
+WHERE ename = 'KING';
+
+SELECT * FROM emp
+SELECT * FROM dept
+
+CREATE VIEW gaji_tinggi AS
+SELECT ename
+FROM emp
+WHERE sal = (SELECT MAX(sal) FROM emp;
+SELECT * FROM gaji_tinggi;
+
+CREATE VIEW hiredate_tua AS
+SELECT ename
+FROM emp
+WHERE hiredate = (SELECT MIN(hiredate) FROM emp);
+SELECT * FROM hiredate_tua;
+
+CREATE VIEW pegawai_dname AS
+SELECT e.ename
+FROM emp e
+JOIN dept d ON e.depno = d.depno
+WHERE d.dname = 'SALES';
+SELECT * FROM pegawai_dname;
+
+CREATE VIEW gaji_akunting_kecil AS
+SELECT e.ename
+FROM emp e
+JOIN dept d ON e.depno = d.depno
+WHERE d.dname = 'ACCOUNTING'
+ORDER BY e.sal
+LIMIT 1;
+SELECT * FROM gaji_akunting_kecil;
+
+CREATE VIEW gaji_sales_tinggi AS
+SELECT e.ename
+FROM emp e
+JOIN dept d ON e.depno = d.depno
+WHERE d.dname = 'SALES'
+ORDER BY e.sal DESC
+LIMIT 1;
+SELECT * FROM gaji_sales_tinggi;
